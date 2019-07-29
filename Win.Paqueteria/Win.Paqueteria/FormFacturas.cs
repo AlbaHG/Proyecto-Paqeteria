@@ -1,5 +1,4 @@
-﻿using BL.Entregas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Win.Paqueteria
 {
-    public partial class FormIngresos : Form
+    public partial class FormFacturas : Form
     {
-        IngresosBL _ingresos;
-
-        public FormIngresos()
+        public FormFacturas()
         {
             InitializeComponent();
-
-            _ingresos = new IngresosBL();
-            listaIngresosBindingSource.DataSource = _ingresos.ObtenerIngresos();
         }
     }
 }

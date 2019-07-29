@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.Entregas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,16 @@ namespace Win.Paqueteria
 {
     public partial class FormLogin : Form
     {
+
         private bool _autenticado;
+        SegridadBL _seguridad;
+
 
         public FormLogin()
         {
             InitializeComponent();
+
+            _seguridad = new SegridadBL();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,21 +37,21 @@ namespace Win.Paqueteria
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             string usuario;
             string contraseña;
 
             usuario = textBox1.Text;
             contraseña = textBox2.Text;
 
-            if (usuario == "admin" && contraseña == "123")
+            var resultado = _seguridad.Atorizar(usuario, contraseña);
 
+            if (resultado == true)
             {
                 this.Close();
-
             }
             else
             {
-
                 if (usuario == "user" && contraseña == "456")
                 {
                     _autenticado = true;

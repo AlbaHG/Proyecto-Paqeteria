@@ -11,16 +11,16 @@ using System.Windows.Forms;
 
 namespace Win.Paqueteria
 {
-    public partial class FormIngresos : Form
+    public partial class FormClientes : Form
     {
-        IngresosBL _ingresos;
+        ClientesBL _clientes;
 
-        public FormIngresos()
+        public FormClientes()
         {
             InitializeComponent();
 
-            _ingresos = new IngresosBL();
-            listaIngresosBindingSource.DataSource = _ingresos.ObtenerIngresos();
+            _clientes = new ClientesBL();
+            listaClientesBindingSource.DataSource = _clientes.ObtenerClientes();
         }
     }
 }
