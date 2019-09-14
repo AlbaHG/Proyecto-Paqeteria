@@ -33,7 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,17 +69,17 @@
     <Compile Include="FormClientes.Designer.cs">
       <DependentUpon>FormClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFacturas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFacturas.Designer.cs">
-      <DependentUpon>FormFacturas.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormEntregas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormEntregas.Designer.cs">
       <DependentUpon>FormEntregas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactura.Designer.cs">
+      <DependentUpon>FormFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="FormIngresos.cs">
       <SubType>Form</SubType>
@@ -90,6 +107,9 @@
     <EmbeddedResource Include="FormEntregas.resx">
       <DependentUpon>FormEntregas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFactura.resx">
+      <DependentUpon>FormFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormIngresos.resx">
       <DependentUpon>FormIngresos.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,13 +129,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Properties\DataSources\BL.Entregas.Clientes.datasource" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BL.Entregas.Categoria.datasource" />
+    <None Include="Properties\DataSources\BL.Entregas.CategoriasBL.datasource" />
     <None Include="Properties\DataSources\BL.Entregas.ClientesBL.datasource" />
     <None Include="Properties\DataSources\BL.Entregas.Entregas.datasource" />
     <None Include="Properties\DataSources\BL.Entregas.EntregasBL.datasource" />
+    <None Include="Properties\DataSources\BL.Entregas.FacturaDetalle.datasource" />
+    <None Include="Properties\DataSources\BL.Entregas.Facturas.datasource" />
+    <None Include="Properties\DataSources\BL.Entregas.FacturasBL.datasource" />
     <None Include="Properties\DataSources\BL.Entregas.Ingreso.datasource" />
     <None Include="Properties\DataSources\BL.Entregas.IngresosBL.datasource" />
     <None Include="Properties\DataSources\BL.Entregas.SegridadBL.datasource" />
+    <None Include="Properties\DataSources\BL.Entregas.TiposBL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

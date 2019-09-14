@@ -67,18 +67,23 @@ namespace Win.Paqueteria
             formEntregas.Show();
         }
 
-        private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var formFacturas = new FormFacturas();
-            formFacturas.MdiParent = this;
-            formFacturas.Show();
-        }
-
          private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var formClientes = new FormClientes();
             formClientes.MdiParent = this;
             formClientes.Show();
+        }
+
+        private void facturasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formFactura = new FormFactura();
+            formFactura.MdiParent = this;
+            formFactura.Show();
         }
     }
 }

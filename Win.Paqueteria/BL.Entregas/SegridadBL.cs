@@ -8,21 +8,28 @@ namespace BL.Entregas
 {
     public class SegridadBL
     {
-        public bool Atorizar(string usuario, string contraseña)
+        Contexto _contexto;
+
+        public SegridadBL()
         {
-            if (usuario == "admin" && contraseña == "123")
+            _contexto = new Contexto();
+        }
+
+        public bool Autorizar(string usuario, string contraseña)
+        {
+
+            var usuarios = _contexto.Usuarios.ToList();
+
+
+            foreach (var usuarioDB in usuarios)
             {
-                return true;
-            }else
-            {
-                if (usuario == "user" && contraseña == "456")
+                if (usuario == usuarioDB.Nombre && contraseña == usuarioDB.Contraseña)
                 {
                     return true;
                 }
-
             }
+
             return false;
         }
-     
     }
 }
