@@ -69,6 +69,8 @@
             this.tipoIdComboBox = new System.Windows.Forms.ComboBox();
             this.fotoPictureBox = new System.Windows.Forms.PictureBox();
             this.existenciaTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             precioLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
@@ -314,7 +316,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(668, 320);
+            this.button2.Location = new System.Drawing.Point(684, 389);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(143, 28);
@@ -385,7 +387,7 @@
             // 
             // Agregar
             // 
-            this.Agregar.Location = new System.Drawing.Point(475, 320);
+            this.Agregar.Location = new System.Drawing.Point(491, 389);
             this.Agregar.Margin = new System.Windows.Forms.Padding(4);
             this.Agregar.Name = "Agregar";
             this.Agregar.Size = new System.Drawing.Size(124, 28);
@@ -435,7 +437,7 @@
             // 
             this.fotoPictureBox.BackColor = System.Drawing.Color.Silver;
             this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.listaIngresosBindingSource, "Foto", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.fotoPictureBox.Location = new System.Drawing.Point(475, 58);
+            this.fotoPictureBox.Location = new System.Drawing.Point(491, 127);
             this.fotoPictureBox.Name = "fotoPictureBox";
             this.fotoPictureBox.Size = new System.Drawing.Size(336, 251);
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -445,16 +447,37 @@
             // 
             // existenciaTextBox
             // 
+            this.existenciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaIngresosBindingSource, "Existencia", true));
             this.existenciaTextBox.Location = new System.Drawing.Point(125, 320);
             this.existenciaTextBox.Name = "existenciaTextBox";
             this.existenciaTextBox.Size = new System.Drawing.Size(123, 22);
             this.existenciaTextBox.TabIndex = 27;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(767, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 28);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(559, 30);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(192, 22);
+            this.txtBuscar.TabIndex = 29;
             // 
             // FormIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 496);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.button1);
             this.Controls.Add(existenciaLabel);
             this.Controls.Add(this.existenciaTextBox);
             this.Controls.Add(this.fotoPictureBox);
@@ -529,6 +552,8 @@
         private System.Windows.Forms.ComboBox tipoIdComboBox;
         private System.Windows.Forms.PictureBox fotoPictureBox;
         private System.Windows.Forms.TextBox existenciaTextBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBuscar;
         //private System.Windows.Forms.BindingSource listaCategoriasBindingSource;
     }
 }

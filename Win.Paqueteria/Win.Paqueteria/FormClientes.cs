@@ -13,19 +13,19 @@ namespace Win.Paqueteria
 {
     public partial class FormClientes : Form
     {
-        ClientesBL _clientes;
+        ClientesBL _clientesBL;
 
         public FormClientes()
         {
             InitializeComponent();
 
-            _clientes = new ClientesBL();
-            listaClientesBindingSource.DataSource = _clientes.ObtenerClientes();
+            _clientesBL = new ClientesBL();
+            listaClientesBindingSource.DataSource = _clientesBL.ObtenerClientes();
         }
         private void Eliminar(int id)
         {
 
-            var resultado = _clientes.EliminarCliente(id);
+            var resultado = _clientesBL.EliminarCliente(id);
 
             if (resultado == true)
             {
@@ -47,12 +47,14 @@ namespace Win.Paqueteria
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            if (idTextBox1.Text != "")
+            //if (idTextBox1.Text != "")
+            if (idTextBox.Text != "")
             {
                 var resultado = MessageBox.Show("Desea eliminar este cliente?", "Eliminar", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
                 {
-                    var id = Convert.ToInt32(idTextBox1.Text);
+                    //var id = Convert.ToInt32(idTextBox1.Text);
+                    var id = Convert.ToInt32(idTextBox.Text);
                     Eliminar(id);
                 }
             }
@@ -60,7 +62,7 @@ namespace Win.Paqueteria
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            _clientes.AgregarCliente();
+            _clientesBL.AgregarCliente();
             listaClientesBindingSource.MoveLast();
 
             DeshabilitarHabilitarBotones(true);
@@ -85,12 +87,36 @@ namespace Win.Paqueteria
 
         private void Cancelar_Click(object sender, EventArgs e)
         {
-            _clientes.CancelarCambios();
+            _clientesBL.CancelarCambios();
             DeshabilitarHabilitarBotones(true);
          
         }
 
         private void FormClientes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clientesBLBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            listaClientesBindingSource.EndEdit();
+            var cliente = (Cliente)listaClientesBindingSource.Current;
+
+            var resultado = _clientesBL.GuardarCliente(cliente);
+
+            if (resultado.Exitoso == true)
+            {
+                listaClientesBindingSource.ResetBindings(false);
+                DeshabilitarHabilitarBotones(true);
+                MessageBox.Show("Cliente Guardado");
+            }
+            else
+            {
+                MessageBox.Show(resultado.Mensaje);
+            }
+        }
+
+        private void idTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

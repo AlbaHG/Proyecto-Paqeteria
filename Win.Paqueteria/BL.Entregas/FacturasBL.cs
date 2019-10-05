@@ -78,14 +78,13 @@ namespace BL.Entregas
         {
             foreach (var detalle in facturas.FacturaDetalle)
             {
-                var ingresos = _contexto.ingresos.Find(detalle.ProductoId);
+                var ingresos = _contexto.ingreso.Find(detalle.ProductoId);
                 if (ingresos != null)
 
                 {
                     if (facturas.Activo == true)
                     {
-                    
-                    ingresos.Existencia = ingresos.Existencia - detalle.Cantidad;
+                         ingresos.Existencia = ingresos.Existencia - detalle.Cantidad;
                 
                       }   
                     else
@@ -107,10 +106,8 @@ namespace BL.Entregas
                 resultado.Exitoso = false;
 
                 return resultado;
-
             }
         
-
             if (factura.Id != 0 && factura.Activo == true)
             {
                 resultado.Mensaje = "La factura esta anulada ya fue emitida y no se pueden realizar cambios en ella";
@@ -129,7 +126,6 @@ namespace BL.Entregas
             {
                 resultado.Mensaje = "Seleccione un cliente";
                 resultado.Exitoso = false;
-
                 
             }
 
@@ -152,8 +148,6 @@ namespace BL.Entregas
             }
 
 
-
-
             return resultado;
          }
 
@@ -166,7 +160,7 @@ namespace BL.Entregas
 
                 foreach (var detalle in factura.FacturaDetalle)
                     {
-                    var ingresos = _contexto.ingresos.Find(detalle.ProductoId);
+                    var ingresos = _contexto.ingreso.Find(detalle.ProductoId);
                     if (ingresos != null)
 
                     {
@@ -236,8 +230,7 @@ public class Facturas
         public FacturaDetalle()
     {
         Cantidad = 1;
-       
-          
+        
     }
         
   }

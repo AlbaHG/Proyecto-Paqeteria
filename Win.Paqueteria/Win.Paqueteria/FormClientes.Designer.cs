@@ -29,15 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label correoLabel1;
-            System.Windows.Forms.Label direccionLabel1;
-            System.Windows.Forms.Label idLabel1;
-            System.Windows.Forms.Label nombreLabel1;
-            System.Windows.Forms.Label telefonoLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
+            System.Windows.Forms.Label activoLabel;
+            System.Windows.Forms.Label idLabel;
+            System.Windows.Forms.Label nombreLabel;
             this.clientesBLBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.clientesBLBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -50,69 +47,21 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.clientesBLBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.Cancelar = new System.Windows.Forms.ToolStripButton();
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listaClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.correoTextBox1 = new System.Windows.Forms.TextBox();
-            this.direccionTextBox1 = new System.Windows.Forms.TextBox();
-            this.idTextBox1 = new System.Windows.Forms.TextBox();
-            this.nombreTextBox1 = new System.Windows.Forms.TextBox();
-            this.telefonoTextBox1 = new System.Windows.Forms.TextBox();
-            correoLabel1 = new System.Windows.Forms.Label();
-            direccionLabel1 = new System.Windows.Forms.Label();
-            idLabel1 = new System.Windows.Forms.Label();
-            nombreLabel1 = new System.Windows.Forms.Label();
-            telefonoLabel1 = new System.Windows.Forms.Label();
+            this.activoCheckBox = new System.Windows.Forms.CheckBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.clientesBLBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            activoLabel = new System.Windows.Forms.Label();
+            idLabel = new System.Windows.Forms.Label();
+            nombreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBLBindingNavigator)).BeginInit();
             this.clientesBLBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaClientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBLBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listaClientesBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // correoLabel1
-            // 
-            correoLabel1.AutoSize = true;
-            correoLabel1.Location = new System.Drawing.Point(43, 249);
-            correoLabel1.Name = "correoLabel1";
-            correoLabel1.Size = new System.Drawing.Size(55, 17);
-            correoLabel1.TabIndex = 11;
-            correoLabel1.Text = "Correo:";
-            // 
-            // direccionLabel1
-            // 
-            direccionLabel1.AutoSize = true;
-            direccionLabel1.Location = new System.Drawing.Point(43, 164);
-            direccionLabel1.Name = "direccionLabel1";
-            direccionLabel1.Size = new System.Drawing.Size(71, 17);
-            direccionLabel1.TabIndex = 13;
-            direccionLabel1.Text = "Direccion:";
-            // 
-            // idLabel1
-            // 
-            idLabel1.AutoSize = true;
-            idLabel1.Location = new System.Drawing.Point(43, 79);
-            idLabel1.Name = "idLabel1";
-            idLabel1.Size = new System.Drawing.Size(23, 17);
-            idLabel1.TabIndex = 15;
-            idLabel1.Text = "Id:";
-            // 
-            // nombreLabel1
-            // 
-            nombreLabel1.AutoSize = true;
-            nombreLabel1.Location = new System.Drawing.Point(43, 124);
-            nombreLabel1.Name = "nombreLabel1";
-            nombreLabel1.Size = new System.Drawing.Size(62, 17);
-            nombreLabel1.TabIndex = 17;
-            nombreLabel1.Text = "Nombre:";
-            // 
-            // telefonoLabel1
-            // 
-            telefonoLabel1.AutoSize = true;
-            telefonoLabel1.Location = new System.Drawing.Point(43, 206);
-            telefonoLabel1.Name = "telefonoLabel1";
-            telefonoLabel1.Size = new System.Drawing.Size(68, 17);
-            telefonoLabel1.TabIndex = 19;
-            telefonoLabel1.Text = "Telefono:";
             // 
             // clientesBLBindingNavigator
             // 
@@ -142,7 +91,7 @@
             this.clientesBLBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.clientesBLBindingNavigator.Name = "clientesBLBindingNavigator";
             this.clientesBLBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.clientesBLBindingNavigator.Size = new System.Drawing.Size(845, 27);
+            this.clientesBLBindingNavigator.Size = new System.Drawing.Size(763, 27);
             this.clientesBLBindingNavigator.TabIndex = 0;
             this.clientesBLBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -155,10 +104,6 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(24, 24);
             this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // clientesBLBindingSource
-            // 
-            this.clientesBLBindingSource.DataSource = typeof(BL.Entregas.ClientesBL);
             // 
             // bindingNavigatorCountItem
             // 
@@ -244,6 +189,7 @@
             this.clientesBLBindingNavigatorSaveItem.Name = "clientesBLBindingNavigatorSaveItem";
             this.clientesBLBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 24);
             this.clientesBLBindingNavigatorSaveItem.Text = "Guardar datos";
+            this.clientesBLBindingNavigatorSaveItem.Click += new System.EventHandler(this.clientesBLBindingNavigatorSaveItem_Click);
             // 
             // Cancelar
             // 
@@ -256,75 +202,84 @@
             this.Cancelar.Visible = false;
             this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
-            // clientesBindingSource
-            // 
-            this.clientesBindingSource.DataSource = typeof(BL.Entregas.Usuario);
-            // 
             // listaClientesBindingSource
             // 
             this.listaClientesBindingSource.DataMember = "ListaClientes";
             this.listaClientesBindingSource.DataSource = this.clientesBLBindingSource;
             // 
-            // correoTextBox1
+            // activoLabel
             // 
-            this.correoTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaClientesBindingSource, "Correo", true));
-            this.correoTextBox1.Location = new System.Drawing.Point(120, 245);
-            this.correoTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.correoTextBox1.Name = "correoTextBox1";
-            this.correoTextBox1.Size = new System.Drawing.Size(393, 22);
-            this.correoTextBox1.TabIndex = 12;
+            activoLabel.AutoSize = true;
+            activoLabel.Location = new System.Drawing.Point(49, 177);
+            activoLabel.Name = "activoLabel";
+            activoLabel.Size = new System.Drawing.Size(50, 17);
+            activoLabel.TabIndex = 1;
+            activoLabel.Text = "Activo:";
             // 
-            // direccionTextBox1
+            // activoCheckBox
             // 
-            this.direccionTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaClientesBindingSource, "Direccion", true));
-            this.direccionTextBox1.Location = new System.Drawing.Point(120, 161);
-            this.direccionTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.direccionTextBox1.Name = "direccionTextBox1";
-            this.direccionTextBox1.Size = new System.Drawing.Size(393, 22);
-            this.direccionTextBox1.TabIndex = 14;
+            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.listaClientesBindingSource, "Activo", true));
+            this.activoCheckBox.Location = new System.Drawing.Point(117, 172);
+            this.activoCheckBox.Name = "activoCheckBox";
+            this.activoCheckBox.Size = new System.Drawing.Size(204, 24);
+            this.activoCheckBox.TabIndex = 2;
+            this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // idTextBox1
+            // idLabel
             // 
-            this.idTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaClientesBindingSource, "Id", true));
-            this.idTextBox1.Location = new System.Drawing.Point(120, 76);
-            this.idTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.idTextBox1.Name = "idTextBox1";
-            this.idTextBox1.Size = new System.Drawing.Size(393, 22);
-            this.idTextBox1.TabIndex = 16;
+            idLabel.AutoSize = true;
+            idLabel.Location = new System.Drawing.Point(49, 90);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(23, 17);
+            idLabel.TabIndex = 3;
+            idLabel.Text = "Id:";
             // 
-            // nombreTextBox1
+            // idTextBox
             // 
-            this.nombreTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaClientesBindingSource, "Nombre", true));
-            this.nombreTextBox1.Location = new System.Drawing.Point(120, 121);
-            this.nombreTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nombreTextBox1.Name = "nombreTextBox1";
-            this.nombreTextBox1.Size = new System.Drawing.Size(393, 22);
-            this.nombreTextBox1.TabIndex = 18;
+            this.idTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaClientesBindingSource, "Id", true));
+            this.idTextBox.Location = new System.Drawing.Point(117, 87);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(204, 22);
+            this.idTextBox.TabIndex = 4;
+            this.idTextBox.TextChanged += new System.EventHandler(this.idTextBox_TextChanged);
             // 
-            // telefonoTextBox1
+            // nombreLabel
             // 
-            this.telefonoTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaClientesBindingSource, "Telefono", true));
-            this.telefonoTextBox1.Location = new System.Drawing.Point(120, 202);
-            this.telefonoTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.telefonoTextBox1.Name = "telefonoTextBox1";
-            this.telefonoTextBox1.Size = new System.Drawing.Size(393, 22);
-            this.telefonoTextBox1.TabIndex = 20;
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(49, 130);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(62, 17);
+            nombreLabel.TabIndex = 5;
+            nombreLabel.Text = "Nombre:";
+            // 
+            // nombreTextBox
+            // 
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listaClientesBindingSource, "Nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(117, 127);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(204, 22);
+            this.nombreTextBox.TabIndex = 6;
+            // 
+            // clientesBLBindingSource
+            // 
+            this.clientesBLBindingSource.DataSource = typeof(BL.Entregas.ClientesBL);
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataSource = typeof(BL.Entregas.Usuario);
             // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 628);
-            this.Controls.Add(correoLabel1);
-            this.Controls.Add(this.correoTextBox1);
-            this.Controls.Add(direccionLabel1);
-            this.Controls.Add(this.direccionTextBox1);
-            this.Controls.Add(idLabel1);
-            this.Controls.Add(this.idTextBox1);
-            this.Controls.Add(nombreLabel1);
-            this.Controls.Add(this.nombreTextBox1);
-            this.Controls.Add(telefonoLabel1);
-            this.Controls.Add(this.telefonoTextBox1);
+            this.ClientSize = new System.Drawing.Size(763, 256);
+            this.Controls.Add(activoLabel);
+            this.Controls.Add(this.activoCheckBox);
+            this.Controls.Add(idLabel);
+            this.Controls.Add(this.idTextBox);
+            this.Controls.Add(nombreLabel);
+            this.Controls.Add(this.nombreTextBox);
             this.Controls.Add(this.clientesBLBindingNavigator);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormClientes";
@@ -333,9 +288,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientesBLBindingNavigator)).EndInit();
             this.clientesBLBindingNavigator.ResumeLayout(false);
             this.clientesBLBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaClientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBLBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listaClientesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,11 +314,9 @@
         private System.Windows.Forms.ToolStripButton clientesBLBindingNavigatorSaveItem;
         private System.Windows.Forms.BindingSource clientesBindingSource;
         private System.Windows.Forms.BindingSource listaClientesBindingSource;
-        private System.Windows.Forms.TextBox correoTextBox1;
-        private System.Windows.Forms.TextBox direccionTextBox1;
-        private System.Windows.Forms.TextBox idTextBox1;
-        private System.Windows.Forms.TextBox nombreTextBox1;
-        private System.Windows.Forms.TextBox telefonoTextBox1;
         private System.Windows.Forms.ToolStripButton Cancelar;
+        private System.Windows.Forms.CheckBox activoCheckBox;
+        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.TextBox nombreTextBox;
     }
 }

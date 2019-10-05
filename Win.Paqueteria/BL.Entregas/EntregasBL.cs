@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,56 +10,148 @@ namespace BL.Entregas
 {
     public class EntregasBL
     {
+        Contexto _contexto;
+
         public BindingList<Entregas> ListaEntregas { get; set; }
 
         public EntregasBL()
         {
+            _contexto = new Contexto();
             ListaEntregas = new BindingList<Entregas>();
-
-            var entrega1 = new Entregas();
-            entrega1.Nombre = "Selena Maria Lopez Turcios";
-            entrega1.Direccion = "Barrio El Benque, La Ceiba";
-            entrega1.Id = 222;
-            entrega1.Precio = 1000;
-            entrega1.Codigo = 1902;
-            entrega1.Activo = true;
-
-            ListaEntregas.Add(entrega1);
-
-            var entrega2 = new Entregas();
-            entrega2.Nombre = "Ana Maria Castro";
-            entrega2.Direccion = "Res. Campisa, S.P.S, Cortes";
-            entrega2.Id = 111;
-            entrega2.Precio = 500;
-            entrega2.Codigo = 1002;
-            entrega2.Activo = true;
-
-            ListaEntregas.Add(entrega2);
-
-            var entrega3 = new Entregas();
-            entrega3.Nombre = "Gigi Romero Martinez";
-            entrega3.Direccion = "Barrio Las Palmas, S.P.S, Cortes";
-            entrega3.Id = 333;
-            entrega3.Precio = 1000;
-            entrega3.Codigo = 11023;
-            entrega3.Activo = true;
-
-            ListaEntregas.Add(entrega3);
 
         }
         public BindingList<Entregas> ObtenerEntregas()
         {
+            _contexto.ingreso.Load();
+            ListaEntregas = _contexto.Entregas.Local.ToBindingList();
+
             return ListaEntregas;
         }
+        public BindingList<Entregas> ObtenerIngresos()
+        {
+            _contexto.Entregas.Load();
+            ListaEntregas = _contexto.Entregas.Local.ToBindingList();
+
+            return ListaEntregas;
+        }
+
+        //public void AgregarEntrega()
+        //{
+        //    var nuevaEntrega = new Entregas();
+        //  _contexto.Entregas.Add(nuevaEntrega);
+        //}
+
+
+
+
+       // public bool EliminarEntrega(int id)
+       // {
+
+         //   foreach (var entrega in ListaEntregas.ToList())
+           // {
+             //   if (entrega.id == id)
+               // {
+                 //   ListaEntregas.Remove(entrega);
+                   // _contexto.SaveChanges();
+                   //
+                    //return true; 
+
+                //}
+            //}
+
+            //return false;
+        //}
+        private Resultado Validar(Entregas entregas)
+        {
+            var resultado = new Resultado();
+            resultado.Exitoso = true;
+
+            if (entregas == null)
+            {
+
+                resultado.Mensaje = "Agregue un producto valido";
+                resultado.Exitoso = false;
+
+                return resultado;
+            }
+
+
+            if (String.IsNullOrEmpty(entregas.Direccion) == true)
+            {
+                resultado.Mensaje = "Ingrese una Direccion";
+                resultado.Exitoso = false;
+            }
+            return resultado;
+        }
+
+        public void CancelarCambios()
+        {
+            foreach (var item in _contexto.ChangeTracker.Entries())
+            {
+                item.State = EntityState.Unchanged;
+                item.Reload();
+            }
+        }
+
+        public Resultado GuardarEntregas(Entregas entregas)
+        {
+            var resultado = Validar(entregas);
+            if (resultado.Exitoso == false)
+            {
+                return resultado;
+            }
+
+            _contexto.SaveChanges();
+
+            resultado.Exitoso = true;
+            return resultado;
+        }
+
+        public void AgregarEntrega()
+        {
+            var nuevaentrega = new Entregas();
+            //_contexto.Entregas.Add(nuevaentrega);
+            // ListaEntregas.Add(nuevaentrega);
+        }
+        public bool EliminarEntrega(int codigo)
+        {
+            //foreach (var ingreso in ListaIngresos)
+            foreach (var entrega in ListaEntregas.ToList())
+            {
+                if (entrega.id == codigo)
+                {
+                    ListaEntregas.Remove(entrega);
+                    _contexto.SaveChanges();
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
+
+
     public class Entregas
     {
+        public int id { get; set; }
         public string Nombre { get; set; }
-        public int Id { get; set; }
+       // public int Id { get; set; }
         public string Direccion { get; set; }
         public double Precio { get; set; }
         public int Codigo { get; set; }
         public bool Activo { get; set; }
+
+
+        public Entregas()
+        {
+            Activo = true;
+        }
+
+        public class Resultado
+        {
+            public bool Exitoso { get; set; }
+            public string Mensaje { get; set; }
+        }
 
     }
 }

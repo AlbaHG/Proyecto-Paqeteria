@@ -17,7 +17,7 @@ namespace Win.Paqueteria
         IngresosBL _ingresos;
         CategoriasBL _categorias;
         TiposBL _tiposBL;
-        ClientesBL _clientesBL;
+        //ClientesBL _clientesBL;
         
         
         
@@ -43,7 +43,6 @@ namespace Win.Paqueteria
         private void listaIngresosBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             listaIngresosBindingSource.EndEdit();
-
             var ingreso = (Ingreso)listaIngresosBindingSource.Current;
             //var resultado = _ingresos.GuardarIngreso(ingreso);
 
@@ -137,6 +136,7 @@ namespace Win.Paqueteria
 
         private void toolStripButton1Cancelar_Click(object sender, EventArgs e)
         {
+            _ingresos.CancelarCambios();
             DeshabilitarHabilitarBotones(true);
             Eliminar(0);
         }
@@ -147,7 +147,9 @@ namespace Win.Paqueteria
 
             if  (ingreso != null)
             {
+                openFileDialog1.FileName = "";
                 openFileDialog1.ShowDialog();
+
                 var archivo = openFileDialog1.FileName;
 
                 if (archivo != "")
@@ -189,6 +191,16 @@ namespace Win.Paqueteria
         private void fotoPictureBox_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var buscar = txtBuscar.Text;
+            
+            listaIngresosBindingSource.DataSource =
+                _ingresos.ObtenerIngresos(buscar);
+
+            listaIngresosBindingSource.ResetBindings(false);
         }
     }
 

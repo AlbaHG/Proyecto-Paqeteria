@@ -16,9 +16,9 @@ namespace BL.Entregas
         
         public ClientesBL()
         {
-            ListaClientes = new BindingList<Cliente>();
             _contexto = new Contexto();
-            
+            ListaClientes = new BindingList<Cliente>();
+              
         }
         public BindingList<Cliente> ObtenerClientes()
         {
@@ -37,9 +37,7 @@ namespace BL.Entregas
             }
         }
 
-
-
-
+        
         public Resultado GuardarCliente(Cliente cliente)
         {
             var resultado = Validar(cliente);
@@ -52,13 +50,29 @@ namespace BL.Entregas
             resultado.Exitoso = true;
             return resultado;
         }
-
-
+        
         public void AgregarCliente()
         {
             var nuevoCliente = new Cliente();
-            ListaClientes.Add(nuevoCliente);
+            _contexto.Clientes.Add(nuevoCliente);
+            //ListaClientes.Add(nuevoCliente);
             
+        }
+
+        public bool EliminarCliente(int id)
+        {
+            //foreach (var cliente in ListaClientes)
+            foreach (var cliente in ListaClientes.ToList())
+            {
+                if (cliente.Id == id)
+                {
+                    ListaClientes.Remove(cliente);
+                    _contexto.SaveChanges();
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private Resultado Validar (Cliente cliente)
@@ -84,23 +98,7 @@ namespace BL.Entregas
         }
 
 
-        public bool EliminarCliente(int id)
-        {
-            foreach (var cliente in ListaClientes)
-            {
-                if (cliente.Id == id)
-                {
-                    ListaClientes.Remove(cliente);
-                    _contexto.SaveChanges();
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-
-
+       
     }
       public class Usuario
     {
@@ -116,6 +114,13 @@ namespace BL.Entregas
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public bool Activo { get; set; }
+
+
+        public Cliente()
+        {
+            Activo = true;
+        }
 
     }
        

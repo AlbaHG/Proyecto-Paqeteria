@@ -23,11 +23,35 @@ namespace BL.Entregas
         }
         public BindingList<Ingreso> ObtenerIngresos()
         {
-            _contexto.ingresos.Load();
-            ListaIngresos = _contexto.ingresos.Local.ToBindingList();
+            _contexto.ingreso.Load();
+            ListaIngresos = _contexto.ingreso.Local.ToBindingList();
 
             return ListaIngresos;
         }
+
+        public List<Ingreso> ObtenerIngresos(string buscar)
+        {
+           var resultado = _contexto.ingreso
+                .Where(i => i.Descripcion == buscar)
+                .ToList();
+
+            //ListaIngresos = _contexto.ingreso.Local.ToBindingList();
+
+
+
+            return resultado;
+        }
+
+        public void CancelarCambios()
+        {
+            foreach (var item in _contexto.ChangeTracker.Entries())
+            {
+                item.State = EntityState.Unchanged;
+                item.Reload();
+            }
+        }
+
+        
         public Resultado GuardarIngreso(Ingreso ingreso)
         {
             var resultado = Validar(ingreso);
@@ -44,12 +68,14 @@ namespace BL.Entregas
         public void AgregarIngreso()
         {
             var nuevoIngreso = new Ingreso();
-            ListaIngresos.Add(nuevoIngreso);
+            _contexto.ingreso.Add(nuevoIngreso);
+            //ListaIngresos.Add(nuevoIngreso);
         }
 
         public bool EliminarIngreso(int id)
         {
-            foreach (var ingreso in ListaIngresos)
+            //foreach (var ingreso in ListaIngresos)
+            foreach (var ingreso in ListaIngresos.ToList())
             {
                 if (ingreso.id == id)
                 {
@@ -87,7 +113,15 @@ namespace BL.Entregas
             {
                 resultado.Mensaje = "El codigo debe ser mayor que cero";
                 resultado.Exitoso = false;
-            }
+                
+                }
+
+                if (ingreso.Existencia < 0)
+                {
+                    resultado.Mensaje = "La existencia debe ser mayor que cero";
+                    resultado.Exitoso = false;
+
+                }
             if (ingreso.Precio < 0)
             {
                 resultado.Mensaje = "El codigo debe ser mayor que cero";

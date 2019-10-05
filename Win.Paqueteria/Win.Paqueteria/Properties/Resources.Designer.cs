@@ -69,5 +69,25 @@ namespace Win.Paqueteria.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2019_09_16_at_10_28_01_PM__1_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2019-09-16 at 10.28.01 PM (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2019_09_16_at_10_32_49_PM___copia__2_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2019-09-16 at 10.32.49 PM - copia (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

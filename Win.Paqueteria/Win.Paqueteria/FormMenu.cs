@@ -72,11 +72,7 @@ namespace Win.Paqueteria
             var formClientes = new FormClientes();
             formClientes.MdiParent = this;
             formClientes.Show();
-        }
-
-        private void facturasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
+      
         }
 
         private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,6 +80,34 @@ namespace Win.Paqueteria
             var formFactura = new FormFactura();
             formFactura.MdiParent = this;
             formFactura.Show();
+        }
+
+        private void ingresosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void reporteDeFacturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteFacturas = new FormReporteFacturas();
+            formReporteFacturas.MdiParent = this;
+            formReporteFacturas.Show();
+        }
+
+        private void reporteDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteClientes = new FormReporteClientes();
+            formReporteClientes.MdiParent = this;
+            formReporteClientes.Show();
+        }
+
+        private void reporteDeIngresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteIngresos = new FormReporteIngresos();
+            formReporteIngresos.MdiParent = this;
+            formReporteIngresos.Show();
         }
     }
 }
